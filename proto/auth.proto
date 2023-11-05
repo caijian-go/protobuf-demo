@@ -1,0 +1,10 @@
+syntax = "proto3";
+package users;
+
+import "user.proto";
+
+option go_package = "pb/users";
+
+message UserDetail{
+  User user = 1;
+}

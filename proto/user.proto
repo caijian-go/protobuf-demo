@@ -1,0 +1,29 @@
+syntax = "proto3";
+package users;
+
+import "google/protobuf/timestamp.proto";//导入内置类型
+
+option go_package = "pb/users";
+
+message User {
+  // 枚举类型
+  enum UserStatus {
+    UnKnown = 0;
+    Active = 1;
+    InActive = 2;
+  }
+
+  int64 id = 1;
+  string name = 2;
+  string email =3 ;
+  string password = 4;
+  string avatar = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+  UserStatus status = 8;//自定义枚举类型
+  repeated string mobiles = 9;//表示数组：使用 repeated [类型] field
+  map<string,string> mapFields = 10;//表示一个 map 数据
+  google.protobuf.Timestamp birthday = 11;
+}
+
+
