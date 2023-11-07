@@ -3,6 +3,7 @@ package grpc
 import (
 	"fmt"
 	"google.golang.org/grpc"
+	"log"
 	"net"
 	"protobuf-demo/internal/ctl"
 	userProto "protobuf-demo/proto/pb/users"
@@ -10,7 +11,9 @@ import (
 
 func StartGRPCServer() {
 
-	ln, err := net.Listen("tcp", ":8000")
+	port := ":8000"
+
+	ln, err := net.Listen("tcp", port)
 
 	if err != nil {
 		panic(err)
@@ -23,7 +26,11 @@ func StartGRPCServer() {
 
 	userProto.RegisterAuthServiceServer(s, authCtl)
 
+	fmt.Println("serve successful...on " + port)
+	log.Println("serve successful...listening on " + port)
+
 	err = s.Serve(ln)
+
 	if err != nil {
 		fmt.Println(err)
 	}
