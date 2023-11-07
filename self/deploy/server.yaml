@@ -1,0 +1,27 @@
+version: '3'
+
+networks:
+  local_env_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/16
+
+
+services:
+  protobuf-demo:
+    container_name: protobuf-demo
+    hostname: protobuf-demo
+    image: cosmtrek/air
+    restart: always
+    # working_dir value has to be the same of mapped volume
+    working_dir: /protobuf-demo
+    ports:
+      - "8000:8000"
+    environment:
+      - redisconn=host.docker.internal:6379,123456,1
+      - etcd=host.docker.internal:2379
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - $HOME/go/src/protobuf-demo:/protobuf-demo

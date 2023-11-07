@@ -11,7 +11,7 @@ import (
 
 func main() {
 
-	pool := NewUserClientPool("localhost:8000", 20)
+	pool := NewUserClientPool(":8000", 20)
 
 	cli := pool.Get()
 	resp, err := cli.Login(context.Background(), &userProto.LoginRequest{
