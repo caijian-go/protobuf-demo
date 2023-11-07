@@ -26,8 +26,8 @@ func StartGRPCServer() {
 
 	userProto.RegisterAuthServiceServer(s, authCtl)
 
-	fmt.Println("serve successful...on " + port)
-	log.Println("serve successful...listening on " + port)
+	fmt.Println("serve successful... ")
+	log.Println("listening on " + port)
 
 	err = s.Serve(ln)
 
