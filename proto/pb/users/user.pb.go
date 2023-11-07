@@ -83,9 +83,9 @@ type User struct {
 	Avatar    string                 `protobuf:"bytes,5,opt,name=avatar,proto3" json:"avatar,omitempty"`
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Status    User_UserStatus        `protobuf:"varint,8,opt,name=status,proto3,enum=users.User_UserStatus" json:"status,omitempty"` //自定义枚举类型
-	Mobiles   []string               `protobuf:"bytes,9,rep,name=mobiles,proto3" json:"mobiles,omitempty"`                           //表示数组：使用 repeated [类型] field
-	MapFields map[string]string      `protobuf:"bytes,10,rep,name=mapFields,proto3" json:"mapFields,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Status    User_UserStatus        `protobuf:"varint,8,opt,name=status,proto3,enum=users.User_UserStatus" json:"status,omitempty"`                                                                    //自定义枚举类型
+	Mobiles   []string               `protobuf:"bytes,9,rep,name=mobiles,proto3" json:"mobiles,omitempty"`                                                                                              //表示数组：使用 repeated [类型] field
+	MapFields map[string]string      `protobuf:"bytes,10,rep,name=mapFields,proto3" json:"mapFields,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"` //表示一个 map 数据
 	Birthday  *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=birthday,proto3" json:"birthday,omitempty"`
 }
 
